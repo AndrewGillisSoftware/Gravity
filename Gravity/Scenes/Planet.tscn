@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Planet.gd" type="Script" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="Skin" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 0.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereShape" id=4]
+radius = 5.0
+
+[sub_resource type="SphereShape" id=5]
+
+[node name="Planet" type="RigidBody"]
+mass = 1000.0
+gravity_scale = 0.0
+script = ExtResource( 1 )
+
+[node name="Mesh" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000493765, 0.00365305, -0.00268817 )
+mesh = SubResource( 1 )
+skin = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="Affect_Collision" type="CollisionShape" parent="Area"]
+shape = SubResource( 4 )
+
+[node name="Collision" type="CollisionShape" parent="."]
+shape = SubResource( 5 )
+
+[node name="Light" type="OmniLight" parent="."]
+light_bake_mode = 2
+omni_range = 14.2
+[connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area" to="." method="_on_Area_body_shape_exited"]
