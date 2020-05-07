@@ -17,10 +17,6 @@ func setMass(m):
 
 func setFixed(b):
 	fixed = b
-	
-func setPlanetRadius(r):
-	mesh_instance_node.mesh.radius = r
-	mesh_instance_node.mesh.height = r*2
 
 func setInteractionRadius(r):
 	var newShape = SphereShape.new()
@@ -60,21 +56,8 @@ func getDistance(p1:Vector3, p2:Vector3):
 func getUnitVectorToOther(p1:Vector3, p2:Vector3):
 	return (p1-p2)/getDistance(p1,p2)
 
-func interpolate(p:Vector3,to:Vector3, rate):
-	if(p.x > to.x):
-		p.x - rate
-	if(p.y > to.y):
-		p.y - rate
-	if(p.z > to.z):
-		p.z - rate
-	if(p.x < to.x):
-		p.x + rate
-	if(p.y < to.y):
-		p.y + rate
-	if(p.z < to.z):
-		p.z + rate
-	return p
-	
+func getForce():
+	return force	
 
 func _physics_process(delta):
 	for body in bodies:
@@ -89,3 +72,11 @@ func _on_Area_body_shape_entered(body_id, body, body_shape, area_shape):
 func _on_Area_body_shape_exited(body_id, body, body_shape, area_shape):
 	if(body.get_class() == "Planet"):
 		bodies.remove(bodies.find(body))
+
+
+func _on_Area2_body_shape_entered(body_id, body, body_shape, area_shape):
+	if(body.get_class() == "Planet"):
+		var newForce = body.force + force
+		if(body.get_class() == "Planet"):
+			if !fixed:
+				force = newForce/2

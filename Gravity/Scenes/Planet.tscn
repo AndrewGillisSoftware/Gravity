@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Planet.gd" type="Script" id=1]
 
@@ -14,9 +14,11 @@ emission_operator = 0
 emission_on_uv2 = false
 
 [sub_resource type="SphereShape" id=4]
-radius = 5.0
+radius = 302.819
 
 [sub_resource type="SphereShape" id=5]
+
+[sub_resource type="SphereShape" id=6]
 
 [node name="Planet" type="RigidBody"]
 mass = 1000.0
@@ -30,8 +32,10 @@ skin = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0669518, -9.53674e-07, -0.104492 )
 
 [node name="Affect_Collision" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0907745, 0.122044, -0.00149155 )
 shape = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape" parent="."]
@@ -39,6 +43,13 @@ shape = SubResource( 5 )
 
 [node name="Light" type="OmniLight" parent="."]
 light_bake_mode = 2
-omni_range = 14.2
+omni_range = 305.803
+
+[node name="Area2" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00276279, 0.00504029, -0.00405836 )
+shape = SubResource( 6 )
 [connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area" to="." method="_on_Area_body_shape_exited"]
+[connection signal="body_shape_entered" from="Area2" to="." method="_on_Area2_body_shape_entered"]
