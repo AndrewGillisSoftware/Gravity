@@ -1,14 +1,26 @@
 extends Spatial
 
 func _ready():
-	$Sun.setInteractionRadius(1000000)
-	$Sun.setFixed(true)
-	$Sun.setMass(100000000)
-	$Sun.setSkin("res://Assets/sun.jpg")
+	$Mercury.setSkin("res://Assets/mercury.jpg")
+	$Mercury.setLightEmit(0)
 	
-	get_tree().call_group("Planets", "setLightEmit", 0)
-	get_tree().call_group("Planets", "applyForce", Vector3(5,0,0))
+	$Venus.setSkin("res://Assets/venus.jpg")
+	$Venus.setLightEmit(0)
 	
 	$Earth.setSkin("res://Assets/earth.jpg")
+	$Earth.setLightEmit(0)
 	
-	$Sun.setLightEmit(100)
+	$Mars.setSkin("res://Assets/mars.jpg")
+	$Mars.setLightEmit(0)
+	
+	$Jupiter.setSkin("res://Assets/jupiter.jpg")
+	$Jupiter.setLightEmit(0)
+	
+	$Saturn.setSkin("res://Assets/saturn.jpg")
+	$Saturn.setLightEmit(0)
+	
+	$Uranus.setSkin("res://Assets/uranus.jpg")
+	$Uranus.setLightEmit(0)
+	
+	$Neptune.setSkin("res://Assets/neptune.jpg")
+	$Neptune.setLightEmit(0)

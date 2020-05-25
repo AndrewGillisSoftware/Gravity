@@ -14,7 +14,7 @@ emission_operator = 0
 emission_on_uv2 = false
 
 [sub_resource type="SphereShape" id=4]
-radius = 302.819
+radius = 4096.0
 
 [sub_resource type="SphereShape" id=5]
 
@@ -43,7 +43,7 @@ shape = SubResource( 5 )
 
 [node name="Light" type="OmniLight" parent="."]
 light_bake_mode = 2
-omni_range = 305.803
+omni_range = 4096.0
 
 [node name="Area2" type="Area" parent="."]
 

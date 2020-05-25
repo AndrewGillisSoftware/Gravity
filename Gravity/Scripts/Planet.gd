@@ -2,7 +2,8 @@ extends RigidBody
 
 var mesh_instance_node
 var force = Vector3(0,0,0)
-const G = 0.000000000667
+const gScale = 0.5
+const G = 0.000000000667*gScale
 var bodies = Array()
 var fixed = false
 
